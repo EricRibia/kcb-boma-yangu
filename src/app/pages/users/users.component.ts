@@ -121,8 +121,6 @@ export class UsersComponent implements OnInit {
       });
   }
   listAllUsers() {
-    // todo remove return
-    return;
     this.fetchingUsers = true;
     this.apiService
       .listUsersApi()
