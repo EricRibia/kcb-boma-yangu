@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Viewing On Web
 
-Deploy the dist/boma-yangu/browser file
+Deploy the dist/boma-yangu/browser folder
 
 ## Build
 
