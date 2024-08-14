@@ -1,0 +1,52 @@
+.dashboard-card{
+  border-radius: 14px;
+  background: #FFF;
+  box-shadow: 6px 6px 54px 0px rgba(0, 0, 0, 0.05);
+}
+.dashboard-card-title{
+  color: #4D4D4D;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.prefix{
+  opacity: .4;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.56px;
+}
+.dashboard-card-amt{
+  color: #202224;
+  font-size: 37px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+}
+
+.topup-text{
+  color: #787D8B;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.card-subText{
+  color: #606060;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.quick-pymt-text{
+  color: #787D8B;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

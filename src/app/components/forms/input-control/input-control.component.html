@@ -1,0 +1,48 @@
+@if(label && inputStyle != 'password'){
+<label [for]="controlInputName" [class]="labelTwClasses">{{ label }}</label>
+} @switch (inputStyle) { @case ("password") {
+<div class="flex justify-between">
+  <label [class]="labelTwClasses" [for]="controlInputName">{{ label }}</label>
+  <button
+    type="button"
+    (click)="changePasswordVisibility()"
+    class="px-3 py-1 rounded-md flex items-center gap-2 hover:bg-gray-100 duration-500 text-[#666]"
+  >
+    @if(passwordVisible){
+    <img src="assets/icons/eye-blind-icon.svg" alt="hide password" />
+    <span>Hide</span>
+    }@else{
+    <img
+      ngSrc="assets/icons/eye-icon.svg"
+      alt="hide password"
+      height="21"
+      width="21"
+    />
+    <span>Show</span>
+    }
+  </button>
+</div>
+<app-password-input
+  [controlInputName]="controlInputName"
+  [prefixClasses]="prefixClasses"
+  [containerClasses]="containerClasses"
+  [passwordVisible]="passwordVisible"
+  [twClasses]="twClasses"
+  [parentFormGroup]="parentFormGroup"
+  [placeholder]="placeholder"
+  [hasErrors]="hasErrors"
+/>
+}@default {
+<input
+  [id]="controlInputName"
+  [class]="twClasses"
+  [type]="inputType"
+  class="border border-opacity-[.7] border-gray-400 rounded-[12px] py-3"
+  [placeholder]="placeholder"
+  [style.border-color]="hasErrors ? 'red' : ''"
+  [formControlName]="controlInputName"
+  [name]="controlInputName"
+  [maxlength]="maxLength"
+  oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+/>
+} }

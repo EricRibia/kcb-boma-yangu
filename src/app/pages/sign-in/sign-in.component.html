@@ -1,0 +1,70 @@
+<app-auth-layout>
+  <div class="grid grid-cols-2 max-w-[1400px] mx-auto px-4 mt-[100px]">
+    <div class="mt-[100px]">
+      <h1
+        class="text-[50px] text-white font-dinpro_bold"
+        style="line-height: 120%"
+      >
+        Manage Your<br />
+        tenants with <span class="text-accent_color">ease!</span>
+      </h1>
+      <p
+        class="text-white text-[22px] font-[300] mt-[20px]"
+        style="line-height: 32px"
+      >
+        Track payments, easily manage complaints<br />
+        with real-time payment tracking.
+      </p>
+    </div>
+    <div
+      style="box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.05)"
+      class="bg-white rounded-md px-[100px] py-[50px] relative z-20"
+    >
+      <p class="hidden text-[12px] text-[#666] font-[400]">step 1/2</p>
+      <h1 class="text-center text-[#7db14f] text-[20px] font-[500] mb-[30px]">
+        Log in with your username
+      </h1>
+      <form [formGroup]="loginForm" (ngSubmit)="processSigninForm()">
+        <div class="mb-[20px]">
+          <app-input-control
+            [formSubmitted]="loginSubmitted"
+            controlInputName="username"
+            inputType="text"
+            label="Username"
+            placeholder="Enter your username"
+            twClasses="px-[15px] py-[11px] w-full font-[300] outline-0 focus:ring-0 border  border-opacity-[.7] border-gray-400 rounded-[12px]"
+            labelTwClasses="px-[15px] mb-1 block text-[#666] text-[16px] font-[400]"
+          />
+        </div>
+        <div>
+          <app-input-control
+            [formSubmitted]="loginSubmitted"
+            controlInputName="password"
+            inputType="password"
+            inputStyle="password"
+            label="Password"
+            placeholder="Enter your password"
+            twClasses="px-[15px] py-[11px] w-full font-[300] outline-0 focus:ring-0 border  border-opacity-[.7] border-gray-400 rounded-[12px]"
+            labelTwClasses="px-[15px] mb-1 block text-[#666] text-[16px] font-[400]"
+          />
+          <div class="text-right">
+            <!--            todo: set button to link-->
+            <button
+              type="button"
+              (click)="showComingSoon()"
+              class="text-primary_color font-[400] text-[14px]"
+            >
+              Forgot password?
+            </button>
+          </div>
+        </div>
+        <app-input-submit
+          label="Log In"
+          type="submit"
+          [isProcessing]="isProcessingLogin"
+          twClasses="mt-[50px] disabled:opacity-[40%] bg-[#7db14f] py-[13px] rounded-full w-full text-white bg text-[19px] font-[500]"
+        />
+      </form>
+    </div>
+  </div>
+</app-auth-layout>

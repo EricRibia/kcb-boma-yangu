@@ -1,0 +1,145 @@
+<!--<div class="bg-bg_color font-poppins">-->
+<!--  <div [style.height]="topNavHeight + 'px'"></div>-->
+<!--  <div-->
+<!--    appElementSize-->
+<!--    (handleSetElementSize)="setElementSizes($event)"-->
+<!--    [style.width]="-->
+<!--      navOpen && !smallScreen ? 'calc(100% - ' + sideNavSize + ')' : '100%'-->
+<!--    "-->
+<!--    class="pb-[16px] px-4 pt-[30px] duration-500 fixed top-0 right-0 bg-white w-full h-[100px] flex items-center"-->
+<!--  >-->
+<!--    <div class="w-full flex justify-between items-center">-->
+<!--      <div class="flex items-center">-->
+<!--        @if(!navOpen){-->
+<!--        <button-->
+<!--          (click)="toggleNav(!navOpen)"-->
+<!--          class="mr-5 hover:bg-gray-300 hover:shadow-lg border border-gray-200 hover:border hover:border-gray-300 transition duration-500 rounded-full cursor-pointer px-2 py-2"-->
+<!--        >-->
+<!--          &lt;!&ndash;          <fa-icon class="text-3xl text-mainTheme" [icon]="faBars"></fa-icon>&ndash;&gt;-->
+<!--          <svg-->
+<!--            xmlns="http://www.w3.org/2000/svg"-->
+<!--            fill="none"-->
+<!--            viewBox="0 0 24 24"-->
+<!--            stroke-width="1.5"-->
+<!--            stroke="currentColor"-->
+<!--            class="size-6"-->
+<!--          >-->
+<!--            <path-->
+<!--              stroke-linecap="round"-->
+<!--              stroke-linejoin="round"-->
+<!--              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"-->
+<!--            />-->
+<!--          </svg>-->
+<!--        </button>-->
+<!--        }-->
+
+<!--        &lt;!&ndash;        <div [class]="navOpen ? 'ml-12' : ''">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <h1 class="text-[26px] font-[700] text-[#1C1C1C] tracking-wide">&ndash;&gt;-->
+<!--        &lt;!&ndash;            {{ activeRoute()?.label || "Dashboard" }}&ndash;&gt;-->
+<!--        &lt;!&ndash;          </h1>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <p class="text-[#828282] text-[14px] font-[400]">&ndash;&gt;-->
+<!--        &lt;!&ndash;            Welcome back, {{ authData()?.username }}.&ndash;&gt;-->
+<!--        &lt;!&ndash;          </p>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      </div>-->
+
+<!--      <nav class="flex w-full justify-end">-->
+<!--        <div>-->
+<!--          &lt;!&ndash;          <app-logout-dropdown />&ndash;&gt;-->
+<!--        </div>-->
+<!--      </nav>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div-->
+<!--    *ngIf="sideNavSize === '270px' && smallScreen"-->
+<!--    (click)="toggleNav(false)"-->
+<!--    class="bg-black bg-opacity-50 fixed top-0 left-0 w-full h-full z-10"-->
+<!--  ></div>-->
+<!--  <aside-->
+<!--    [class]="!navOpen ? 'opacity-0' : 'opacity-1'"-->
+<!--    class="sidenav z-10"-->
+<!--    [style.width]="sideNavSize"-->
+<!--    aria-label="Sidebar"-->
+<!--  >-->
+<!--    <div class="bg-white p-[10px] overflow-y-hidden h-screen relative">-->
+<!--      <div class="h-full py-4 bg-[#F5F5F5] rounded-md text-black">-->
+<!--        <div>-->
+<!--          <div class="flex items-center p-2 mb-2 justify-center">-->
+<!--            <img-->
+<!--              src="assets/icons/Logo.png"-->
+<!--              class="h-[35px]"-->
+<!--              alt="Paybills Africa"-->
+<!--            />-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <button-->
+<!--          (click)="toggleNav(!navOpen)"-->
+<!--          class="absolute right-[8px] top-8 py-[8px] px-[10px] rounded-l-full bg-white"-->
+<!--        >-->
+<!--          <img src="assets/icons/chevron-left.svg" alt="navbar" />-->
+<!--        </button>-->
+<!--        <ul class="space-y-6 mt-[40px] relative h-full">-->
+<!--          @for (menu of menus; track menu.title){-->
+<!--          <li>-->
+<!--            <button-->
+<!--              (click)="goToRoute(menu.route, menu.title)"-->
+<!--              class="sidebarItem relative w-full flex items-center py-2 px-[30px] text-base font-normal text-black hover:bg-white duration-500"-->
+<!--            >-->
+<!--              <img [src]="menu.icon" [alt]="menu.title" />-->
+<!--              &lt;!&ndash;              <p&ndash;&gt;-->
+<!--              &lt;!&ndash;                class="ml-3 navItemText"&ndash;&gt;-->
+<!--              &lt;!&ndash;                [style]="&ndash;&gt;-->
+<!--              &lt;!&ndash;                  menu.route === activeRoute()?.url ? 'font-weight:700' : ''&ndash;&gt;-->
+<!--              &lt;!&ndash;                "&ndash;&gt;-->
+<!--              &lt;!&ndash;              >&ndash;&gt;-->
+<!--              &lt;!&ndash;                {{ menu.title }}&ndash;&gt;-->
+<!--              &lt;!&ndash;              </p>&ndash;&gt;-->
+<!--              <span *ngIf="menu.hasSub" class="absolute right-4">-->
+<!--                <svg-->
+<!--                  xmlns="http://www.w3.org/2000/svg"-->
+<!--                  fill="none"-->
+<!--                  viewBox="0 0 24 24"-->
+<!--                  stroke-width="1.5"-->
+<!--                  stroke="currentColor"-->
+<!--                  class="size-4"-->
+<!--                >-->
+<!--                  <path-->
+<!--                    stroke-linecap="round"-->
+<!--                    stroke-linejoin="round"-->
+<!--                    d="m19.5 8.25-7.5 7.5-7.5-7.5"-->
+<!--                  />-->
+<!--                </svg>-->
+<!--              </span>-->
+<!--            </button>-->
+<!--            &lt;!&ndash;            <div *ngIf="isActive(menu.title)" @fadeInOut>&ndash;&gt;-->
+<!--            &lt;!&ndash;              @for (subMenu of menu.subMenus; track subMenu.title){&ndash;&gt;-->
+<!--            &lt;!&ndash;              <div class="flex duration-500">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <button&ndash;&gt;-->
+<!--            &lt;!&ndash;                  (click)="goToRoute(subMenu.route, menu.title, true)"&ndash;&gt;-->
+<!--            &lt;!&ndash;                  [class]="&ndash;&gt;-->
+<!--            &lt;!&ndash;                    subMenu.title === activeRoute()?.url&ndash;&gt;-->
+<!--            &lt;!&ndash;                      ? 'text-black bg-[#0000005c]'&ndash;&gt;-->
+<!--            &lt;!&ndash;                      : ''&ndash;&gt;-->
+<!--            &lt;!&ndash;                  "&ndash;&gt;-->
+<!--            &lt;!&ndash;                  class="pl-[50px] mt-2 sidebarItem w-full flex items-center p-2 text-base font-normal text-black hover:bg-white duration-500"&ndash;&gt;-->
+<!--            &lt;!&ndash;                >&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <p class="ml-3 navItemText">{{ subMenu.title }}</p>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </button>&ndash;&gt;-->
+<!--            &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;              }&ndash;&gt;-->
+<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          </li>-->
+<!--          }-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </aside>-->
+<!--  <div class="w-full bg-white"></div>-->
+<!--  <div-->
+<!--    id="main"-->
+<!--    [style]="{ 'margin-left': navOpen && !smallScreen ? sideNavSize : '' }"-->
+<!--    class="h-screen px-8 pt-4"-->
+<!--  >-->
+<!--    <ng-content></ng-content>-->
+<!--  </div>-->
+<!--</div>-->
