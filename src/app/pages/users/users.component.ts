@@ -90,6 +90,7 @@ export class UsersComponent implements OnInit {
   }[] = [];
   processUsersForm() {
     const formData = this.usersForm.value;
+    this.usersFormSubmitted = true;
     this.submittingUsersForm = true;
     this.apiService
       .createUsersApi({
@@ -100,6 +101,7 @@ export class UsersComponent implements OnInit {
       .pipe(
         finalize(() => {
           this.submittingUsersForm = false;
+          this.usersFormSubmitted = false;
         })
       )
       .subscribe({
